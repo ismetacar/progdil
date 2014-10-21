@@ -2,31 +2,43 @@ using System;
 
 namespace UnderScoreToSpace
 {
-	class UnderScoreToSpace
+	static class UnderScoreToSpace
 	{
-		/* ReplaceUnderscoreWithSpace fonksiyonu argüman olarak gelen stringi 
-		   önce karakter dizisine çeviriyor, ardından bu dizi elemanları üzerinde
-		   dolaşarak (dizinin ilk ve son elemanı hariç) '_' karakterini ' ' (space)
-		   olarak güncelliyor. */
-		static void ReplaceUnderscoreWithSpace(string a)
+		public static void ReplaceUnderscoreWithSpace(this string a)
 		{
 			char[] array = a.ToCharArray();
-			for (int i = 1; i < array.Length-1; i++)
-				if (array[i] == '_')  array[i] = ' ';
+			int i, j, k;
+
+			//iki for döngüsünü fonksiyona al
+			for(i = 0; i < array.Length; i++)
+			{
+				if (array[i] != '_')
+				{
+					break;
+				}
+			}
+
+			for(j = array.Length-1; j >= 0; j--)
+			{
+				if (array[j] != '_')
+				{
+					break;
+				}
+			}
+			
+			for (k = i; k < j; k++)
+				array[k] = (array[k] == '_') ? ' ' : array[k];  //?  conditional operator
 
 			string s = new string(array);
 
 			System.Console.WriteLine(s);
 			
 		}
-		/* Main fonksiyonu bir argüman listesi alıyor. Bu argüman listesi String türünde. 
-		   Yine main fonksiyonu bu listenin ilk elemanından başlayarak ReplaceUnderscoreWithSpace
-		   fonksiyonuna tabii tutuyor. */
 		static void Main(String[] args)
 		{
-			for(int i = 0; i < args.Length; i++)
+			foreach (string element in args)
 			{
-				ReplaceUnderscoreWithSpace(args[i]); 
+				element.ReplaceUnderscoreWithSpace();     //patching active 
 			}
 		}
 	} 
