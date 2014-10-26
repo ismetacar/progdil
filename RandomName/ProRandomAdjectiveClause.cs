@@ -243,15 +243,20 @@ namespace ProRandomAdjectiveClause
 
 			Random rand = new Random();
 
-			string clause = this.words [this.language] ["adjectives"] [rand.Next (lengthOfAdjectiveList)] + " " + this.words [this.language] ["names"] [rand.Next (lengthOfNameList)];
+
 		
 			for (int i = 1; i <= this.repeat; i++) 
 			{
+				string clause = this.words [this.language] ["adjectives"] [rand.Next (lengthOfAdjectiveList)] + " " + this.words [this.language] ["names"] [rand.Next (lengthOfNameList)];
 
-				if (History(clause) == 1 )
+								if (History(clause) == 1 )
 				{
 					Console.WriteLine (clause);
-					File.WriteAllText(@"history.txt", clause);
+					//File.WriteAllText(@"history.txt", clause);
+					using (StreamWriter w = File.AppendText("history.txt"))
+					{
+						w.WriteLine(clause);
+					}
 				}
 				else
 				{
