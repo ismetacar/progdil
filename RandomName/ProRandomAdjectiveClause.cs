@@ -5,84 +5,278 @@ using System.Text;
 
 namespace ProRandomAdjectiveClause
 {
-	public class ProRandomMain
+	public class ProRandomAdjectiveClause
 	{
-		public static void Main(String[] args)
+		string language;
+		int repeat;
+
+		Dictionary<string, Dictionary<string, string[]>> words = new Dictionary<string, Dictionary<string, string[]>> {
+			{
+				"tr", 
+				new Dictionary<string, string[]>
+				{
+					{"names", 
+						new string[] 
+						{   
+							"abajur",
+							"agartici",
+							"aski",
+							"ayakkabı bağı",
+							"balon",
+							"balta",
+							"bavul",
+							"bayrak",
+							"beyzbol",
+							"bicak",
+							"bicak",
+							"civi",
+							"dantel",
+							"duvar",
+							"el arabası",
+							"fare",
+							"fatura",
+							"fermuar",
+							"fotograf albumu",
+							"goz",
+							"gozluk",
+							"hoparlör",
+							"igne",
+							"inci",
+							"iplik",
+							"izgara",
+							"jel",
+							"kagit",
+							"kahve makinesi",
+							"kutu",
+							"ok",
+							"ors",
+							"outlet",
+							"pasaport",
+							"pastel boya",
+							"piyano",
+							"radyo",
+							"resim cercevesi",
+							"ruj",
+							"saat",
+							"sabun",
+							"sapka",
+							"sueter",
+							"sünger",
+							"zincir",
+							"zımba",
+							"zımpara",
+							"çiş",
+							"çorap",
+							"şeker",
+
+						}
+					},
+					{"adjectives", 
+						new string[] 
+						{ 
+							"antika",
+							"büyük",
+							"büyük",
+							"büyük",
+							"cılız",
+							"cılız",
+							"dar",
+							"derin",
+							"dev",
+							"devasa",
+							"dik",
+							"dikenli",
+							"donuk",
+							"düz",
+							"düz",
+							"düz",
+							"fantezi",
+							"garip",
+							"geniş",
+							"geniş",
+							"grotesk",
+							"güzel",
+							"harika",
+							"hasarlı",
+							"inişli çıkışlı",
+							"içi boş",
+							"kavisli",
+							"kaygan",
+							"kirli",
+							"kocaman",
+							"koyu",
+							"kuru",
+							"küçük",
+							"küçük",
+							"zarif",
+							"çamurlu",
+							"çarpık",
+							"çekici",
+							"çirkin",
+							"şişman"
+
+						}
+					}
+				}
+			},
+
+			{
+				"en", 
+				new Dictionary<string, string[]>
+				{
+					{"names", 
+						new string[] 
+						{ 
+							"anvil",
+							"arrow",
+							"axe",
+							"balloon",
+							"baseball",
+							"bathtub",
+							"bible",
+							"bike",
+							"bikini",
+							"bleach",
+							"blouse",
+							"blowdryer",
+							"book",
+							"bookmark",
+							"boombox",
+							"bottle cap",
+							"button",
+							"candle",
+							"candy wrapper",
+							"canvas",
+							"clock",
+							"coffee maker",
+							"comb",
+							"cookie jar",
+							"cork",
+							"crayons",
+							"credit card",
+							"cushion",
+							"deodorant",
+							"detergent",
+							"seatbelt",
+							"sharpie",
+							"shield",
+							"shoelace",
+							"shovel",
+							"tobacco",
+							"toothpaste",
+							"toothpick",
+							"vase",
+							"wheelbarrow",
+							"whiteout",
+							"zipper",
+						}
+					},
+
+					{"adjectives", 
+						new string[] 
+						{  
+							"attractive",
+							"average",
+							"beautiful",
+							"big",
+							"broad",
+							"broken",
+							"bumpy",
+							"chubby",
+							"clean",
+							"colorful",
+							"colossal",
+							"fancy",
+							"fat",
+							"filthy",
+							"flat",
+							"gigantic",
+							"gorgeous",
+							"graceful",
+							"great",
+							"grotesque",
+							"high",
+							"hollow",
+							"huge",
+							"large",
+							"little",
+							"long",
+							"mammoth",
+							"massive",
+							"miniature",
+							"misty",
+							"muddy",
+							"narrow",
+							"petite",
+							"plain",
+							"precious",
+							"prickly",
+							"puny",
+							"quaint",
+							"round",
+							"scrawny",
+							"shallow",
+							"shiny",
+							"short",
+							"skinny",
+							"tiny",
+							"ugly",
+							"unusual",
+							"wide"
+						}
+					}
+				}
+			}
+		};
+
+		public ProRandomAdjectiveClause(string arglang, int argrpt)
 		{
+			this.language = arglang;
+			this.repeat = argrpt;
+			//	Generate ();
+		}
 
-			string language = "tr";
-			int repeat = 1;
+		public void Generate()
+		{
+			int lengthOfNameList = this.words[this.language]["names"].Length;
+			int lengthOfAdjectiveList = this.words[this.language]["adjectives"].Length;
 
-			if (args.Length == 2) 
+			Random rand = new Random();
+
+			string clause = this.words [this.language] ["adjectives"] [rand.Next (lengthOfAdjectiveList)] + " " + this.words [this.language] ["names"] [rand.Next (lengthOfNameList)];
+		
+			for (int i = 1; i <= this.repeat; i++) 
 			{
-				if ((args [0] == "en" | args [0] == "tr") & int.TryParse (args [1], out repeat)) 
+
+				if (History(clause) == 1 )
 				{
-					language = args [0];
-				} 
-				else if (args [1] == "en" | args [1] == "tr" & int.TryParse (args [0], out repeat)) 
-				{
-					language = args [1];
-				} 
-				else 
-				{
-					help ();
-				}
-			} 
-			else if (args.Length == 1) 
-			{
-				if(args [0] == "en" | args [0] == "tr") 
-				{
-					language = args [0];
-				} 
-				else if (int.TryParse (args [0], out repeat)) 
-				{
-					//automaticaly doing
-				}
-				else if (args[0] == "help" | args[0] == "-h")
-				{
-					help ();
+					Console.WriteLine (clause);
+					File.WriteAllText(@"history.txt", clause);
 				}
 				else
 				{
-					help ();
+					continue;
 				}
-			} 
 
-			else if (args.Length == 0) 
-			{
-				//nothing
 			}
-
-			else {
-				help ();
-			}
-
-			ProRandomAdjectiveClause clause = new ProRandomAdjectiveClause (language, repeat);
-
-			clause.Generate ();
-
 		}
-		public static void help ()
+
+		public int History(string product)
 		{
-			Console.WriteLine("\t\t\tKullanım kılavuzu\n");
-			Console.WriteLine("NAME");
-			Console.WriteLine("\t\t MainProRandomAdjectiveClause.exe");
-			Console.WriteLine("SYNOPSIS");
-			Console.WriteLine("\t\t $mono MainProRandomAdjectiveClause.exe [-lang] [-num] [-h or help]");
-			Console.WriteLine("OPTION");
-			Console.WriteLine("\t\t -lang:");
-			Console.WriteLine("\t\t\t The choice of language. tr[Turkish] and en[English] supported languages");
-			Console.WriteLine("\t\t -num:");
-			Console.WriteLine("\t\t\t Number of repetitions. This argument must be integers");
-			Console.WriteLine("\t\t -h or help:");
-			Console.WriteLine("\t\t\t Directs you to the user manual. This page =) ");
-			Console.WriteLine("EXAMPLE");
-			Console.WriteLine("\t\t\t $mono MainProRandomAdjectiveClause.exe en 10");
-			Console.WriteLine("\t\t\t $mono MainProRandomAdjectiveClause.exe tr 10");
-			Console.WriteLine("\t\t\t $mono MainProRandomAdjectiveClause.exe 10");
-			Console.WriteLine("\t\t\t $mono MainProRandomAdjectiveClause.exe help");
-			Console.WriteLine("\t\t\t $mono MainProRandomAdjectiveClause.exe -h");
-			Console.WriteLine ("Not: Kullanıma uygun olmayan çalıştırma şeklinde dil ön tanımlı Türkçe olarak dikkate alınacaktır..\n");
+			foreach (string line in File.ReadAllLines("history.txt"))
+			{
+				if (product == line)
+				{
+					return 0;
+				}
+				else 
+				{
+					return 1;
+				}
+			}
+			return 1;
 		}
+
+
 	}
 }
