@@ -1,18 +1,16 @@
 # RandomName
 
-RandomName dizini altında ProRandomAdjectiveClause.cs 
+RandomName dizini altında ProRandomAdjectiveClause.cs ve MainProRandomAdjectiveClause.cs
 
 ###derleme:
-$ gmcs ProRandomAdjectiveClause.cs
-
-###çalıştırma
-$ mono ProRandomAdjectiveClause.exe
+`$ gmcs -pkg:dotnet *.cs`
+Bu şekilde derlendiği zaman MainProRandomAdjectveClause.exe oluşacaktır. 
+###çalıştırma:
+`$ mono MainProRandomAdjectiveClause.exe`
 
 #ReplaceUnderscoreWithSpace
 
-###derleme
-$ gmcs ReplaceUnderscoreWithSpace.cs
-
-###çalıştırma
-
-$ mono ReplaceUnderscoreWithSpace.exe
+###derleme:
+`$ gmcs ReplaceUnderscoreWithSpace.cs`
+###çalıştırma:
+`$ mono ReplaceUnderscoreWithSpace.exe`
