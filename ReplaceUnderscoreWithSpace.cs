@@ -11,7 +11,7 @@ namespace UnderScoreToSpace
 			int i, j, k;
 
 			//iki for döngüsünü fonksiyona al
-			for(i = 0; i < array.Length; i++)
+			for (i = 0; i < array.Length; i++)
 			{
 				if (array[i] != '_')
 				{
@@ -19,7 +19,7 @@ namespace UnderScoreToSpace
 				}
 			}
 
-			for(j = array.Length-1; j >= 0; j--)
+			for (j = array.Length-1; j >= 0; j--)
 			{
 				if (array[j] != '_')
 				{

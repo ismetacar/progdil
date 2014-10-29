@@ -15,7 +15,7 @@ namespace ProRandomAdjectiveClause
 				"tr", 
 				new Dictionary<string, string[]>
 				{
-					{"names", 
+					{ "names", 
 						new string[] 
 						{   
 							"abajur",
@@ -71,7 +71,7 @@ namespace ProRandomAdjectiveClause
 
 						}
 					},
-					{"adjectives", 
+					{ "adjectives", 
 						new string[] 
 						{ 
 							"antika",
@@ -124,7 +124,7 @@ namespace ProRandomAdjectiveClause
 				"en", 
 				new Dictionary<string, string[]>
 				{
-					{"names", 
+					{ "names", 
 						new string[] 
 						{ 
 							"anvil",
@@ -172,7 +172,7 @@ namespace ProRandomAdjectiveClause
 						}
 					},
 
-					{"adjectives", 
+					{ "adjectives", 
 						new string[] 
 						{  
 							"attractive",
@@ -249,7 +249,7 @@ namespace ProRandomAdjectiveClause
 			{
 				string clause = this.words [this.language] ["adjectives"] [rand.Next (lengthOfAdjectiveList)] + " " + this.words [this.language] ["names"] [rand.Next (lengthOfNameList)];
 
-								if (History(clause) == 1 )
+				if (History(clause) == 1 )
 				{
 					Console.WriteLine (clause);
 					//File.WriteAllText(@"history.txt", clause);
